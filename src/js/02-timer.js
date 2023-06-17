@@ -20,6 +20,8 @@ function doCountInterval(ms) {
   const interval = setInterval(() => {
     ms = ms - 1000;
     makeTextContent(ms);
+    startBtn.disabled = true;
+    startBtn.classList.add('noActive');
 
     if (ms <= 1000) {
       clearInterval(interval);
@@ -51,9 +53,10 @@ const options = {
       startBtn.classList.remove('noActive');
     }
     let countedTime = selectedDates[0].getTime() - Date.now();
-    makeTextContent(countedTime);
+
     startBtn.addEventListener('click', () => {
       doCountInterval(countedTime);
+      makeTextContent(countedTime);
     });
   },
 };
